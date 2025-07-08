@@ -48,6 +48,8 @@ public class PlinkoController : MonoBehaviour
 
         UpdateMovement();
         UpdateInteract();
+
+        SpawnBall();
     }
 
     void UpdateActionValues()
@@ -64,5 +66,16 @@ public class PlinkoController : MonoBehaviour
     void UpdateInteract()
     {
 
+    }
+
+    void SpawnBall()
+    {
+        if (currentBall == null)
+        {
+            currentBall = Instantiate(ballPrefab);
+
+            currentBall.transform.SetParent(transform);
+            currentBall.transform.position = baseSpawnPosition;
+        }
     }
 }
