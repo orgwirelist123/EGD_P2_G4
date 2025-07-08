@@ -1390,6 +1390,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "dafe0ced40b14263a3cc0860822dca6a"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fde6bbd380b640f49098861fd933f73b"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "db9a24c54b8e438b93aa17e2d88b0aa9"
                 },
                 "m_SlotId": 2
@@ -2552,8 +2566,8 @@
     "m_ObjectId": "21384cd173a548f6b63d6d013f000530",
     "m_Title": "NOT GOOD High Light Solution",
     "m_Position": {
-        "x": -3789.333251953125,
-        "y": -1675.3336181640625
+        "x": -3789.33349609375,
+        "y": -1675.33349609375
     }
 }
 
@@ -7133,7 +7147,7 @@
     "m_Title": "ToonLighting",
     "m_Position": {
         "x": -5622.66650390625,
-        "y": -537.3333740234375
+        "y": -537.333251953125
     }
 }
 
@@ -7610,8 +7624,8 @@
     "m_ObjectId": "ac9afecc08ef499ebf9987af82d9ea90",
     "m_Title": "High Light",
     "m_Position": {
-        "x": -3703.999755859375,
-        "y": -13.3333740234375
+        "x": -3704.0,
+        "y": -13.333381652832032
     }
 }
 
