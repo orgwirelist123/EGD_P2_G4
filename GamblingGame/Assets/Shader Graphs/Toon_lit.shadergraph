@@ -970,20 +970,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "83a31ec3305d4201ab24e5f65194301d"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "902795185e6442f18a19a6c43f9ee437"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "86fc423f93b8482aa4bad86b75739384"
                 },
                 "m_SlotId": 0
@@ -1376,20 +1362,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "d5577ccbd4a84b568336290b42f3bfa4"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "23d96eed95144a58bbd8e34fecb3b810"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "d83f2a42a37f46a685d11e96a056da7a"
                 },
                 "m_SlotId": 0
@@ -1411,6 +1383,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "99f9702a776f4693b43d8b33539bfa9b"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "dafe0ced40b14263a3cc0860822dca6a"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fde6bbd380b640f49098861fd933f73b"
                 },
                 "m_SlotId": 1
             }
@@ -2581,7 +2567,7 @@
     "m_Title": "NOT GOOD High Light Solution",
     "m_Position": {
         "x": -3789.33349609375,
-        "y": -1675.333740234375
+        "y": -1675.33349609375
     }
 }
 
@@ -3008,8 +2994,8 @@
     "m_ObjectId": "318a6a2bd3804977b815aabf9bd4d1ad",
     "m_Title": "Basic Shading",
     "m_Position": {
-        "x": -5240.6669921875,
-        "y": -970.6668090820313
+        "x": -5240.66650390625,
+        "y": -970.6666870117188
     }
 }
 
@@ -5312,8 +5298,8 @@
     "m_ObjectId": "6b4e734e85774ae2ac6ba06c4274a886",
     "m_Title": "Dot Grid Creation",
     "m_Position": {
-        "x": -5053.333984375,
-        "y": 1879.9998779296875
+        "x": -5053.33349609375,
+        "y": 1880.0
     }
 }
 
@@ -7160,8 +7146,8 @@
     "m_ObjectId": "993c3ec100e64e458d224e2f98bfe454",
     "m_Title": "ToonLighting",
     "m_Position": {
-        "x": -5622.66748046875,
-        "y": -537.33349609375
+        "x": -5622.66650390625,
+        "y": -537.333251953125
     }
 }
 
@@ -7639,7 +7625,7 @@
     "m_Title": "High Light",
     "m_Position": {
         "x": -3704.0,
-        "y": -13.333541870117188
+        "y": -13.333381652832032
     }
 }
 
@@ -9789,7 +9775,7 @@
     "m_ObjectId": "e1bec59d8dcc42ed9d854d190b8e1c9e",
     "m_Title": "Dots Effect",
     "m_Position": {
-        "x": -5350.6669921875,
+        "x": -5350.66650390625,
         "y": 634.0
     }
 }
