@@ -19,7 +19,7 @@ public class PlinkoController : MonoBehaviour
     protected float interactValue;
 
     protected float lastBallSpawn = 0;
-    protected float ballCooldown = 1;
+    public float ballCooldown = 0.25f;
 
     private void Awake()
     {
@@ -80,7 +80,7 @@ public class PlinkoController : MonoBehaviour
             currentBall = Instantiate(ballPrefab);
 
             currentBall.transform.SetParent(transform);
-            currentBall.transform.position = baseSpawnPosition;
+            currentBall.transform.localPosition = baseSpawnPosition;
 
             currentBall = null;
         }
