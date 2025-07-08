@@ -16,7 +16,10 @@ public class PlinkoController : MonoBehaviour
     protected GameObject currentBall;
 
     protected Vector2 moveValue;
-    protected int interactValue;
+    protected float interactValue;
+
+    protected float lastBallSpawn = 0;
+    protected float ballCooldown = 1;
 
     private void Awake()
     {
@@ -55,7 +58,7 @@ public class PlinkoController : MonoBehaviour
     void UpdateActionValues()
     {
         moveValue = moveAction.ReadValue<Vector2>();
-        interactValue = interactAction.ReadValue<int>();
+        interactValue = interactAction.ReadValue<float>();
     }
 
     void UpdateMovement()
@@ -70,12 +73,16 @@ public class PlinkoController : MonoBehaviour
 
     void SpawnBall()
     {
-        if (currentBall == null)
+        if (currentBall == null && interactValue >= 1 && Time.time > lastBallSpawn + ballCooldown)
         {
+            lastBallSpawn = Time.time;
+
             currentBall = Instantiate(ballPrefab);
 
             currentBall.transform.SetParent(transform);
             currentBall.transform.position = baseSpawnPosition;
+
+            currentBall = null;
         }
     }
 }
