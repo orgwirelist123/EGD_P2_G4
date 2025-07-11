@@ -11,6 +11,12 @@ public class PlinkoController : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject plinkoBoard;
 
+    public GameObject leftBound;
+    public GameObject rightBound;
+    public GameObject spawnPosition;
+
+    public float moveSpeed = 0.5f;
+
     public Vector3 baseSpawnPosition = new Vector3(0.15f, 1.75f, 0);
 
     protected GameObject currentBall;
@@ -63,26 +69,45 @@ public class PlinkoController : MonoBehaviour
 
     void UpdateMovement()
     {
-
+        if (currentBall == null) { return; }
+        float min = Mathf.Min(leftBound.transform.position.z, rightBound.transform.position.z);
+        float max = Mathf.Max(leftBound.transform.position.z, rightBound.transform.position.z);
+        Vector3 newPosition = new Vector3(
+            currentBall.transform.position.x,
+            currentBall.transform.position.y,
+            Mathf.Clamp(currentBall.transform.position.z + moveValue.x * moveSpeed, min, max)
+        );
+        currentBall.transform.position = newPosition;
     }
 
     void UpdateInteract()
     {
-
+        if (interactValue >= 1)
+        {
+            currentBall.GetComponent<Rigidbody>().useGravity = true;
+            currentBall = null;
+            lastBallSpawn = Time.time;
+        }
     }
 
     void SpawnBall()
     {
-        if (currentBall == null && interactValue >= 1 && Time.time > lastBallSpawn + ballCooldown)
+        if (currentBall == null && Time.time > lastBallSpawn + ballCooldown)
         {
-            lastBallSpawn = Time.time;
-
             currentBall = Instantiate(ballPrefab);
 
             currentBall.transform.SetParent(transform);
-            currentBall.transform.localPosition = baseSpawnPosition;
 
-            currentBall = null;
+            if (spawnPosition != null)
+            {
+                currentBall.transform.position = spawnPosition.transform.position;
+            }
+            else
+            {
+                currentBall.transform.localPosition = baseSpawnPosition;
+            }
+
+            currentBall.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 }
