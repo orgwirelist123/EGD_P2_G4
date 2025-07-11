@@ -12,6 +12,8 @@ public class StageManager : MonoBehaviour
 
     public List<string> levelNames = new List<string>();
 
+    public float moneyCounter = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -40,7 +42,9 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckStageThresholds();
+
+        // moneyCounter += Time.deltaTime;
     }
 
     public void LoadAdditionalLevel(string levelName)
@@ -51,5 +55,18 @@ public class StageManager : MonoBehaviour
     public void AddLevelStageThresholds(string levelName, List<StageThreshold> stageThresholds)
     {
         this.stageThresholds.AddRange(stageThresholds);
+    }
+
+    public void CheckStageThresholds()
+    {
+        foreach (StageThreshold threshold in stageThresholds)
+        {
+            threshold.UpdateLoadBasedOnThreshold(moneyCounter);
+        }
+    }
+
+    public void AddMoney(float amount)
+    {
+        moneyCounter += amount;
     }
 }

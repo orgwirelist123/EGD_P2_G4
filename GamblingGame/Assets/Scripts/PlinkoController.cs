@@ -26,6 +26,7 @@ public class PlinkoController : MonoBehaviour
 
     protected float lastBallSpawn = 0;
     public float ballCooldown = 0.25f;
+    protected bool canSpawnBall = false;
 
     private void Awake()
     {
@@ -82,8 +83,15 @@ public class PlinkoController : MonoBehaviour
 
     void UpdateInteract()
     {
-        if (interactValue >= 1)
+        if (interactValue == 0)
         {
+            canSpawnBall = true;
+        }
+
+        if (currentBall != null && interactValue >= 1 && canSpawnBall)
+        {
+            canSpawnBall = false;
+
             currentBall.GetComponent<Rigidbody>().useGravity = true;
             currentBall = null;
             lastBallSpawn = Time.time;

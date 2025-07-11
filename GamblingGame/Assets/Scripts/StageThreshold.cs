@@ -19,7 +19,7 @@ public class StageThreshold : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StoreDescendantPositions(transform);
     }
 
     // Update is called once per frame
@@ -49,6 +49,18 @@ public class StageThreshold : MonoBehaviour
             child.localPosition = hiddenPosition;
 
             StoreDescendantPositions(child);
+        }
+    }
+
+    public void UpdateLoadBasedOnThreshold(float counter)
+    {
+        if (thresholdLoadValue < counter && counter < thresholdUnloadValue)
+        {
+            SetLoading(true);
+        }
+        else
+        {
+            SetLoading(false);
         }
     }
 
