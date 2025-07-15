@@ -7,6 +7,7 @@ public class StageThreshold : MonoBehaviour
     public float thresholdLoadValue = 0;
     public float thresholdUnloadValue = 10;
     public float loadDuration = 5;
+    public float unloadMultiplier = 1;
     public float currentTime = 0;
 
     private float yOffsetMultiplier = 1.5f;
@@ -31,7 +32,7 @@ public class StageThreshold : MonoBehaviour
         }
         else
         {
-            currentTime = Mathf.Clamp(currentTime - Time.deltaTime, 0, loadDuration);
+            currentTime = Mathf.Clamp(currentTime - Time.deltaTime * unloadMultiplier, 0, loadDuration);
         }
 
         UpdateObjectPosition();

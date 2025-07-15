@@ -17,6 +17,9 @@ public class PlinkoController : MonoBehaviour
 
     public float moveSpeed = 0.5f;
 
+    public float wanderDuration = 1f;
+    public float wanderRange = 1f;
+
     public Vector3 baseSpawnPosition = new Vector3(0.15f, 1.75f, 0);
 
     protected GameObject currentBall;
@@ -27,6 +30,10 @@ public class PlinkoController : MonoBehaviour
     protected float lastBallSpawn = 0;
     public float ballCooldown = 0.25f;
     protected bool canSpawnBall = false;
+
+    protected float currentWander = 0;
+    protected float wanderMultiplier = 1;
+    protected Vector3 lastWanderVector = Vector3.zero;
 
     private void Awake()
     {
@@ -78,7 +85,24 @@ public class PlinkoController : MonoBehaviour
             currentBall.transform.position.y,
             Mathf.Clamp(currentBall.transform.position.z + moveValue.x * moveSpeed, min, max)
         );
-        currentBall.transform.position = newPosition;
+
+        currentWander += Time.deltaTime * wanderMultiplier;
+        if (currentWander > wanderDuration || currentWander < 0)
+        {
+            wanderMultiplier *= -1;
+        }
+        currentWander = Mathf.Clamp(currentWander, 0, wanderDuration);
+
+        float wanderOffset = wanderRange * (currentWander / wanderDuration);
+
+        Vector3 wanderVector = new Vector3(
+            0,
+            0,
+            wanderOffset - wanderRange / 2
+        );
+        currentBall.transform.position = newPosition + wanderVector - lastWanderVector;
+
+        lastWanderVector = wanderVector;
     }
 
     void UpdateInteract()
@@ -93,6 +117,7 @@ public class PlinkoController : MonoBehaviour
             canSpawnBall = false;
 
             currentBall.GetComponent<Rigidbody>().useGravity = true;
+            currentBall.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             currentBall = null;
             lastBallSpawn = Time.time;
         }
@@ -116,6 +141,7 @@ public class PlinkoController : MonoBehaviour
             }
 
             currentBall.GetComponent<Rigidbody>().useGravity = false;
+            currentBall.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }
