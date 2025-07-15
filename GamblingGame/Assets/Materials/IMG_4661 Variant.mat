@@ -38,8 +38,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _High_Light_Area: 1
+    - _Shading_Area1: 2
+    - _Shading_Area2: 0.15
     m_Colors:
     - _Base_Color: {r: 0.7169812, g: 0.6527083, b: 0.5974843, a: 0}
+    - _Middle_Shade_Color: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
