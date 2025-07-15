@@ -19,7 +19,7 @@ public class StageThreshold : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StoreDescendantPositions(transform);
     }
 
     // Update is called once per frame
@@ -42,13 +42,39 @@ public class StageThreshold : MonoBehaviour
         {
             originalPositions.Add(child.gameObject, child.localPosition);
 
-            Vector3 yOffset = new Vector3(0, child.GetComponent<MeshRenderer>().bounds.size.y, 0);
+            Bounds combinedBounds = new Bounds(Vector3.zero, Vector3.zero);
+            var renderers = child.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer render in renderers)
+            {
+                if (combinedBounds.size.magnitude == 0)
+                {
+                    combinedBounds = render.bounds;
+                }
+                else
+                {
+                    combinedBounds.Encapsulate(render.bounds);
+                }
+            }
+
+            Vector3 yOffset = new Vector3(0, combinedBounds.size.y, 0);
             Vector3 hiddenPosition = child.localPosition - yOffset * yOffsetMultiplier;
             hiddenPositions.Add(child.gameObject, hiddenPosition);
 
             child.localPosition = hiddenPosition;
 
-            StoreDescendantPositions(child);
+            //StoreDescendantPositions(child);
+        }
+    }
+
+    public void UpdateLoadBasedOnThreshold(float counter)
+    {
+        if (thresholdLoadValue < counter && counter < thresholdUnloadValue)
+        {
+            SetLoading(true);
+        }
+        else
+        {
+            SetLoading(false);
         }
     }
 
