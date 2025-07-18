@@ -5709,7 +5709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdName: ExampleThreshold
   thresholdLoadValue: 150
-  thresholdUnloadValue: 300
+  thresholdUnloadValue: 250
   loadDuration: 5
   unloadMultiplier: 1
   currentTime: 0
