@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdName: ExampleThreshold1
   thresholdLoadValue: 10
-  thresholdUnloadValue: 100
+  thresholdUnloadValue: 110
   loadDuration: 5
   unloadMultiplier: 1
   currentTime: 0
@@ -4643,7 +4643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdName: ExampleThreshold
   thresholdLoadValue: 50
-  thresholdUnloadValue: 100
+  thresholdUnloadValue: 150
   loadDuration: 5
   unloadMultiplier: 1
   currentTime: 0
@@ -4914,7 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdName: ExampleThreshold2
   thresholdLoadValue: 30
-  thresholdUnloadValue: 100
+  thresholdUnloadValue: 130
   loadDuration: 5
   unloadMultiplier: 1
   currentTime: 0
