@@ -1945,6 +1945,7 @@ MonoBehaviour:
   skyboxPlane: {fileID: 0}
   minimumLoadValue: -1
   maximumUnloadValue: -1
+  maximumLoadValue: -1
   stageThresholds:
   - {fileID: 813931976}
   - {fileID: 559041605}
@@ -2368,6 +2369,7 @@ MonoBehaviour:
   thresholdName: ExampleThreshold1
   thresholdLoadValue: 10
   thresholdUnloadValue: 110
+  loadSpeed: 1
   loadDuration: 10
   unloadMultiplier: 1
   currentTime: 0
@@ -3359,8 +3361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thresholdName: ExampleThreshold1
-  thresholdLoadValue: 0
+  thresholdLoadValue: -1000
   thresholdUnloadValue: 100
+  loadSpeed: 1
   loadDuration: 0.01
   unloadMultiplier: 1
   currentTime: 0
@@ -4661,6 +4664,7 @@ MonoBehaviour:
   thresholdName: ExampleThreshold
   thresholdLoadValue: 50
   thresholdUnloadValue: 150
+  loadSpeed: 1
   loadDuration: 10
   unloadMultiplier: 1
   currentTime: 0
@@ -4933,6 +4937,7 @@ MonoBehaviour:
   thresholdName: ExampleThreshold2
   thresholdLoadValue: 30
   thresholdUnloadValue: 130
+  loadSpeed: 1
   loadDuration: 10
   unloadMultiplier: 1
   currentTime: 0
