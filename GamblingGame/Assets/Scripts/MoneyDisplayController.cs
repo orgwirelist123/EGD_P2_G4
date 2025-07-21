@@ -5,6 +5,7 @@ public class MoneyDisplayController : MonoBehaviour
     public GameObject barFront;
 
     public float targetRatio = 0;
+    public float updateSpeed = 0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +25,7 @@ public class MoneyDisplayController : MonoBehaviour
 
         RectTransform barTransform = barFront.GetComponent<RectTransform>();
 
-        float t = Time.deltaTime;
+        float t = updateSpeed;
         float a = barTransform.localScale.y;
         float b = targetRatio;
 

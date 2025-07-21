@@ -7905,6 +7905,7 @@ MonoBehaviour:
   thresholdName: ExampleThreshold1
   thresholdLoadValue: 400
   thresholdUnloadValue: 10000000
+  loadSpeed: 1
   loadDuration: 10
   unloadMultiplier: 1
   currentTime: 0
@@ -9202,16 +9203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40e374c41a5fb748b6621aa41a07283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level2
+  levelName: Level4
   map: {fileID: 1824172771}
   skyboxPlane: {fileID: 0}
   minimumLoadValue: -1
   maximumUnloadValue: -1
+  maximumLoadValue: -1
   stageThresholds:
   - {fileID: 1600722581}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1824172773
 Transform:
   m_ObjectHideFlags: 0
@@ -9538,6 +9537,7 @@ GameObject:
   - component: {fileID: 1890908511}
   - component: {fileID: 1890908510}
   - component: {fileID: 1890908509}
+  - component: {fileID: 1890908512}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9655,6 +9655,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890908512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890908508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7101ee331f860c46ac13a542111e258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1894801856
 PrefabInstance:
   m_ObjectHideFlags: 0

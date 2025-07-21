@@ -406,11 +406,16 @@ MonoBehaviour:
   - Level1
   - Level2
   - Level3
+  - Level4
   moneyCounter: 0
-  maxLoadValue: 0
+  maxLoadValue: 1
   plinkoBoard: {fileID: 0}
   rumbleAudio: {fileID: 0}
   goalVolume: 0
+  playerCamera: {fileID: 1121981630}
+  baseCameraPosition: {x: 0, y: 0, z: 0}
+  currentXOffset: 0
+  maxXOffset: 5
 --- !u!4 &245144924
 Transform:
   m_ObjectHideFlags: 0
@@ -848,6 +853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barFront: {fileID: 175164011}
   targetRatio: 0
+  updateSpeed: 0.5
 --- !u!1 &1708062446
 GameObject:
   m_ObjectHideFlags: 0

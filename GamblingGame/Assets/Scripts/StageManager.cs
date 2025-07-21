@@ -21,6 +21,13 @@ public class StageManager : MonoBehaviour
 
     public float goalVolume = 0;
 
+    public GameObject playerCamera;
+    public Vector3 baseCameraPosition;
+
+    public float currentXOffset = 0;
+    public float maxXOffset = 5;
+    public float goalXOffset = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -48,13 +55,18 @@ public class StageManager : MonoBehaviour
         rumbleAudio = AudioManager.instance.PlayAudio("Rumble", 1.0f, true);
         rumbleAudio.Play();
         //rumbleAudio.Pause();
+
+        baseCameraPosition = playerCamera.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        goalXOffset = Mathf.Lerp(0, maxXOffset, moneyCounter / maxLoadValue);
 
+        Vector3 cameraOffset = new Vector3(Mathf.Lerp(currentXOffset, goalXOffset, Time.deltaTime), 0, 0);
         // moneyCounter += Time.deltaTime;
+        playerCamera.transform.position = baseCameraPosition + cameraOffset;
     }
 
     public void UpdateMaxLoadValue(float newMaxLoadValue)
