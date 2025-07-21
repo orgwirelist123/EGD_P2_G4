@@ -41,10 +41,10 @@ Material:
     m_Floats:
     - _down_blend: 0.189
     - _horizon_blend: 0.853
-    - _sky_blend: 0.466
+    - _sky_blend: 0.489
     m_Colors:
     - _down_color: {r: 0.41857514, g: 0.7707418, b: 0.9308176, a: 0}
     - _horizon_color: {r: 0.5691823, g: 0.85639423, b: 1, a: 0}
-    - _sky_color: {r: 0.3238992, g: 0.7989973, b: 1, a: 0}
+    - _sky_color: {r: 0.32389918, g: 0.7989973, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
