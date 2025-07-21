@@ -63,8 +63,9 @@ public class StageManager : MonoBehaviour
     void Update()
     {
         goalXOffset = Mathf.Lerp(0, maxXOffset, moneyCounter / maxLoadValue);
+        currentXOffset = Mathf.Lerp(currentXOffset, goalXOffset, Time.deltaTime);
 
-        Vector3 cameraOffset = new Vector3(Mathf.Lerp(currentXOffset, goalXOffset, Time.deltaTime), 0, 0);
+        Vector3 cameraOffset = new Vector3(currentXOffset, 0, 0);
         // moneyCounter += Time.deltaTime;
         playerCamera.transform.position = baseCameraPosition + cameraOffset;
     }
