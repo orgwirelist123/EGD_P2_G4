@@ -14,6 +14,8 @@ public class StageManager : MonoBehaviour
 
     public float moneyCounter = 0;
 
+    public GameObject plinkoBoard;
+
     private void Awake()
     {
         if (instance != null)

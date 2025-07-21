@@ -39,6 +39,8 @@ public class StageThreshold : MonoBehaviour
     }
     private void StoreDescendantPositions(Transform parent)
     {
+        float mapY = parent.parent.parent.transform.position.y;
+
         foreach (Transform child in parent)
         {
             originalPositions.Add(child.gameObject, child.localPosition);
@@ -58,7 +60,7 @@ public class StageThreshold : MonoBehaviour
             }
 
             Vector3 yOffset = new Vector3(0, combinedBounds.size.y, 0);
-            Vector3 positionYOffset = new Vector3(0, Mathf.Abs(child.localPosition.y), 0);
+            Vector3 positionYOffset = new Vector3(0, Mathf.Abs(child.localPosition.y) + mapY, 0);
             Vector3 hiddenPosition = child.localPosition - (yOffset * yOffsetMultiplier) - (positionYOffset);
             hiddenPositions.Add(child.gameObject, hiddenPosition);
 
@@ -70,7 +72,7 @@ public class StageThreshold : MonoBehaviour
 
     public void UpdateLoadBasedOnThreshold(float counter)
     {
-        if (thresholdLoadValue < counter && counter < thresholdUnloadValue)
+        if (thresholdLoadValue <= counter && counter <= thresholdUnloadValue)
         {
             SetLoading(true);
         }

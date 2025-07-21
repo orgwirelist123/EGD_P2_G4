@@ -151,7 +151,9 @@ MonoBehaviour:
   levelNames:
   - Level1
   - Level2
+  - Level3
   moneyCounter: 0
+  plinkoBoard: {fileID: 0}
 --- !u!4 &245144924
 Transform:
   m_ObjectHideFlags: 0

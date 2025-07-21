@@ -1038,8 +1038,8 @@ MonoBehaviour:
   thresholdName: ExampleThreshold1
   thresholdLoadValue: 110
   thresholdUnloadValue: 250
-  loadDuration: 5
-  unloadMultiplier: 1
+  loadDuration: 10
+  unloadMultiplier: 10
   currentTime: 0
   loadState: 0
 --- !u!1 &304480105
@@ -1889,8 +1889,8 @@ MonoBehaviour:
   thresholdName: ExampleThreshold1
   thresholdLoadValue: 100
   thresholdUnloadValue: 250
-  loadDuration: 0.01
-  unloadMultiplier: 0.01
+  loadDuration: 10
+  unloadMultiplier: 10
   currentTime: 0
   loadState: 0
 --- !u!1 &465518011
@@ -4711,8 +4711,8 @@ MonoBehaviour:
   thresholdName: ExampleThreshold2
   thresholdLoadValue: 130
   thresholdUnloadValue: 250
-  loadDuration: 5
-  unloadMultiplier: 1
+  loadDuration: 10
+  unloadMultiplier: 10
   currentTime: 0
   loadState: 0
 --- !u!1 &1210443821
@@ -5715,8 +5715,8 @@ MonoBehaviour:
   thresholdName: ExampleThreshold
   thresholdLoadValue: 150
   thresholdUnloadValue: 250
-  loadDuration: 5
-  unloadMultiplier: 1
+  loadDuration: 10
+  unloadMultiplier: 10
   currentTime: 0
   loadState: 0
 --- !u!1001 &1399842840
