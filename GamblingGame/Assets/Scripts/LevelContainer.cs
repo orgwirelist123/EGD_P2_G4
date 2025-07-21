@@ -9,6 +9,7 @@ public class LevelContainer : MonoBehaviour
 
     public float minimumLoadValue = -1;
     public float maximumUnloadValue = -1;
+    public float maximumLoadValue = -1;
 
     public List<StageThreshold> stageThresholds = new List<StageThreshold>();
 
@@ -30,8 +31,12 @@ public class LevelContainer : MonoBehaviour
             {
                 minimumLoadValue = Mathf.Min(threshold.thresholdLoadValue, minimumLoadValue);
                 maximumUnloadValue = Mathf.Max(threshold.thresholdUnloadValue, maximumUnloadValue);
+
+                maximumLoadValue = Mathf.Max(threshold.thresholdLoadValue, maximumLoadValue);
             }
         }
+
+        stageManager.UpdateMaxLoadValue(maximumLoadValue);
     }
 
     // Update is called once per frame

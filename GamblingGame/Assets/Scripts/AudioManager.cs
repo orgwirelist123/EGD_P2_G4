@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioManager instance;
+    public static AudioManager instance;
 
     public AudioSource oneShotSource = null;
 
@@ -19,16 +19,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
         instance = this;
-    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         // Initialize the dictionary with all of the audio containers
         foreach (AudioContainer container in audioContainers)
         {
             audioByName.Add(container.name, container);
         }
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
     }
 
     // Update is called once per frame

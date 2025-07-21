@@ -6,16 +6,21 @@ public class StageThreshold : MonoBehaviour
     public string thresholdName = "ExampleThreshold";
     public float thresholdLoadValue = 0;
     public float thresholdUnloadValue = 10;
+    public float loadSpeed = 1;
+
     public float loadDuration = 5;
     public float unloadMultiplier = 1;
+
     public float currentTime = 0;
 
     private float yOffsetMultiplier = 1.5f;
 
     public bool loadState = false;
+    public bool stillMoving = false;
 
     public Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
     public Dictionary<GameObject, Vector3> hiddenPositions = new Dictionary<GameObject, Vector3>();
+    public Dictionary<GameObject, Vector3> targetPositions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,13 +31,26 @@ public class StageThreshold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float beforeTime = currentTime;
         if (loadState)
         {
             currentTime = Mathf.Clamp(currentTime + Time.deltaTime, 0, loadDuration);
+            targetPositions = originalPositions;
         }
         else
         {
             currentTime = Mathf.Clamp(currentTime - Time.deltaTime * unloadMultiplier, 0, loadDuration);
+            targetPositions = hiddenPositions;
+        }
+
+        // If it was clamped and remains the same, then we've reached one of the two ends
+        if (currentTime == beforeTime)
+        {
+            stillMoving = false;
+        }
+        else
+        {
+            stillMoving = true;
         }
 
         UpdateObjectPosition();
@@ -89,6 +107,7 @@ public class StageThreshold : MonoBehaviour
 
     public void UpdateObjectPosition()
     {
+        /*
         float t = currentTime / loadDuration;
         foreach (GameObject gameObject in originalPositions.Keys)
         {
@@ -97,6 +116,16 @@ public class StageThreshold : MonoBehaviour
             Vector3 newPosition = Vector3.Lerp(a, b, t);
 
             gameObject.transform.localPosition = newPosition;
+        }
+        */
+
+        foreach (GameObject gameObject in originalPositions.Keys)
+        {
+            float t = Time.deltaTime;
+            Vector3 a = gameObject.transform.localPosition;
+            Vector3 b = targetPositions[gameObject];
+
+            gameObject.transform.localPosition = Vector3.Lerp(a, b, t);
         }
     }
 }
