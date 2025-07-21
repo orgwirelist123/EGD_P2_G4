@@ -1942,6 +1942,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level1
   map: {fileID: 434065633}
+  skyboxPlane: {fileID: 0}
+  minimumLoadValue: -1
+  maximumUnloadValue: -1
   stageThresholds:
   - {fileID: 813931976}
   - {fileID: 559041605}
@@ -7208,8 +7211,8 @@ MonoBehaviour:
   rightBound: {fileID: 1253117429}
   spawnPosition: {fileID: 38648734}
   moveSpeed: 0.005
-  wanderDuration: 1
-  wanderRange: 1
+  wanderDuration: 5
+  wanderRange: 0.25
   baseSpawnPosition: {x: 0.15, y: 1.75, z: 0.15}
   ballCooldown: 0.05
 --- !u!1 &1959123983

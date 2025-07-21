@@ -58,7 +58,8 @@ public class StageThreshold : MonoBehaviour
             }
 
             Vector3 yOffset = new Vector3(0, combinedBounds.size.y, 0);
-            Vector3 hiddenPosition = child.localPosition - yOffset * yOffsetMultiplier;
+            Vector3 positionYOffset = new Vector3(0, Mathf.Abs(child.localPosition.y), 0);
+            Vector3 hiddenPosition = child.localPosition - (yOffset * yOffsetMultiplier) - (positionYOffset);
             hiddenPositions.Add(child.gameObject, hiddenPosition);
 
             child.localPosition = hiddenPosition;
