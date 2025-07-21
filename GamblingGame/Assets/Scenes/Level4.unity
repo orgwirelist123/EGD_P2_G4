@@ -7906,9 +7906,10 @@ MonoBehaviour:
   thresholdLoadValue: 400
   thresholdUnloadValue: 10000000
   loadDuration: 10
-  unloadMultiplier: 10
+  unloadMultiplier: 1
   currentTime: 0
   loadState: 0
+  stillMoving: 0
 --- !u!4 &1600722582
 Transform:
   m_ObjectHideFlags: 0

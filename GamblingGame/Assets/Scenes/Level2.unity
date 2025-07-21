@@ -1039,9 +1039,10 @@ MonoBehaviour:
   thresholdLoadValue: 110
   thresholdUnloadValue: 250
   loadDuration: 10
-  unloadMultiplier: 10
+  unloadMultiplier: 1
   currentTime: 0
   loadState: 0
+  stillMoving: 0
 --- !u!1 &304480105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,9 +1891,10 @@ MonoBehaviour:
   thresholdLoadValue: 100
   thresholdUnloadValue: 250
   loadDuration: 10
-  unloadMultiplier: 10
+  unloadMultiplier: 1
   currentTime: 0
   loadState: 0
+  stillMoving: 0
 --- !u!1 &465518011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,9 +4714,10 @@ MonoBehaviour:
   thresholdLoadValue: 130
   thresholdUnloadValue: 250
   loadDuration: 10
-  unloadMultiplier: 10
+  unloadMultiplier: 1
   currentTime: 0
   loadState: 0
+  stillMoving: 0
 --- !u!1 &1210443821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5716,9 +5719,10 @@ MonoBehaviour:
   thresholdLoadValue: 150
   thresholdUnloadValue: 250
   loadDuration: 10
-  unloadMultiplier: 10
+  unloadMultiplier: 1
   currentTime: 0
   loadState: 0
+  stillMoving: 0
 --- !u!1001 &1399842840
 PrefabInstance:
   m_ObjectHideFlags: 0
