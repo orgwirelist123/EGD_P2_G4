@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -31,6 +31,12 @@ public class StageManager : MonoBehaviour
     public float currentXOffset = 0;
     public float maxXOffset = 5;
     public float goalXOffset = 0;
+
+    public Image blackScreenImage;
+
+    public float goalScreenOpacity = 0;
+
+    public GameObject personPrefab;
 
     private void Awake()
     {
@@ -79,6 +85,7 @@ public class StageManager : MonoBehaviour
         playerCamera.transform.position = baseCameraPosition + cameraOffset;
 
         UpdateSkybox();
+        UpdateBlackScreen();
     }
 
     public void UpdateMaxLoadValue(float newMaxLoadValue)
@@ -143,10 +150,10 @@ public class StageManager : MonoBehaviour
             return;
         }
 
-        int indexA = 0;
-        int indexB = 1;
+        int indexA = -1;
+        int indexB = 0;
 
-        for (int i = 1; i < skyboxThresholds.Count - 2; i++)
+        for (int i = 0; i < skyboxThresholds.Count - 1; i++)
         {
             // If we have enough money for this threshold, bump our indices up
             if (skyboxThresholds[i] <= moneyCounter)
@@ -156,6 +163,8 @@ public class StageManager : MonoBehaviour
             }
         }
 
+        indexA = Mathf.Clamp(indexA, 0, skyboxMaterials.Count-1);
+        indexB = Mathf.Clamp(indexB, 0, skyboxMaterials.Count-1);
 
         // Get the two skyboxes we would be between
         Material skyboxA = skyboxMaterials[indexA];
@@ -168,10 +177,36 @@ public class StageManager : MonoBehaviour
 
         float t = (moneyCounter - threshA) / divisor + 0.01f;
 
-        Debug.Log(string.Format("{0} - {1} - {2} ({3} / {4})", indexA, indexB, t, moneyCounter - threshA, divisor));
+        //Debug.Log(string.Format("{0} - {1} - {2} ({3} / {4})", indexA, indexB, t, moneyCounter - threshA, divisor));
 
         goalSkybox = skyboxA;
         goalSkybox.Lerp(goalSkybox, skyboxB, t);
         //RenderSettings.skybox.Lerp(skyboxA, skyboxB, t);
+    }
+
+    public void ExecutePlayer()
+    {
+        blackScreenImage.color = new Color(blackScreenImage.color.r, blackScreenImage.color.g, blackScreenImage.color.b, 1);
+        goalScreenOpacity = 1;
+        Invoke("DelaySetOpacity", 3f);
+
+        GameObject person = Instantiate(personPrefab, playerCamera.transform);
+        person.transform.SetParent(gameObject.transform);
+
+        person.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10.0f, -200.0f), Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f)));
+    }
+
+    public void DelaySetOpacity()
+    {
+        goalScreenOpacity = 0;
+        PlinkoController.instance.canAct = true;
+    }
+
+    public void UpdateBlackScreen()
+    {
+        float a = blackScreenImage.color.a;
+        float b = goalScreenOpacity;
+        float t = Time.deltaTime;
+        blackScreenImage.color = new Color(blackScreenImage.color.r, blackScreenImage.color.g, blackScreenImage.color.b, Mathf.Lerp(a, b, t));
     }
 }

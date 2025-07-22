@@ -32,6 +32,8 @@ public class LevelContainer : MonoBehaviour
             {
                 minimumLoadValue = threshold.thresholdLoadValue;
                 maximumUnloadValue = threshold.thresholdUnloadValue;
+
+                maximumLoadValue = threshold.thresholdLoadValue;
             }
             else
             {

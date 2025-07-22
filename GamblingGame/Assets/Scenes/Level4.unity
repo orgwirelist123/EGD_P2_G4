@@ -483,6 +483,11 @@ MonoBehaviour:
   wanderRange: 1
   baseSpawnPosition: {x: 0.15, y: 1.75, z: 0.15}
   ballCooldown: 0.05
+  successes: 0
+  successMultiplier: 0.1
+  failures: 0
+  failureLimit: 5
+  canAct: 1
 --- !u!1001 &129403128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8849,7 +8854,7 @@ MonoBehaviour:
   thresholdLoadValue: 400
   thresholdUnloadValue: 10000000
   loadSpeed: 1
-  loadDuration: 10
+  loadDuration: 2
   unloadMultiplier: 1
   currentTime: 0
   loadState: 0

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlinkoController : MonoBehaviour
 {
@@ -38,6 +40,11 @@ public class PlinkoController : MonoBehaviour
     public int successes = 0;
     public float successMultiplier = 0.1f;
 
+    public int failures = 0;
+    public int failureLimit = 5;
+
+    public bool canAct = true;
+
     private void Awake()
     {
         if (instance != null)
@@ -64,6 +71,11 @@ public class PlinkoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canAct)
+        {
+            return;
+        }
+
         UpdateActionValues();
 
         UpdateMovement();
@@ -147,6 +159,28 @@ public class PlinkoController : MonoBehaviour
 
             currentBall.GetComponent<Rigidbody>().useGravity = false;
             currentBall.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+    public void ResetFailures()
+    {
+        failures = 0;
+    }
+
+    public void AddFailure()
+    {
+        // Check if we're moving to the last skybox; if so, then we proceed, as we are at the last stage
+        bool atLastStage = StageManager.instance.moneyCounter >= StageManager.instance.skyboxThresholds[StageManager.instance.skyboxThresholds.Count - 1];
+        if (!atLastStage) { return; }
+
+        failures++;
+
+        if (failures >= failureLimit)
+        {
+            AudioManager.instance.PlayAudioOneShot("Gunshot", 0.25f);
+            failures = 0;
+            canAct = false;
+            StageManager.instance.ExecutePlayer();
         }
     }
 }

@@ -27,11 +27,13 @@ public class PlinkoGoal : MonoBehaviour
                 PlinkoController.instance.successes++;
                 float pitch = 1 + PlinkoController.instance.successes * PlinkoController.instance.successMultiplier;
                 AudioManager.instance.PlayAudioOneShot("MetalSheet", 0.5f, pitch);
+                PlinkoController.instance.ResetFailures();
             } 
             else
             {
                 PlinkoController.instance.successes = 0;
                 AudioManager.instance.PlayAudioOneShot("Thud", 2);
+                PlinkoController.instance.AddFailure();
             }
 
             Destroy(other.gameObject);
