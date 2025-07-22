@@ -82,7 +82,10 @@ public class StageThreshold : MonoBehaviour
             Vector3 hiddenPosition = child.localPosition - (yOffset * yOffsetMultiplier) - (positionYOffset);
             hiddenPositions.Add(child.gameObject, hiddenPosition);
 
-            child.localPosition = hiddenPosition;
+            if (!loadState)
+            {
+                child.localPosition = hiddenPosition;
+            }
 
             //StoreDescendantPositions(child);
         }
@@ -121,7 +124,7 @@ public class StageThreshold : MonoBehaviour
 
         foreach (GameObject gameObject in originalPositions.Keys)
         {
-            float t = Time.deltaTime;
+            float t = Time.deltaTime * loadSpeed;
             Vector3 a = gameObject.transform.localPosition;
             Vector3 b = targetPositions[gameObject];
 
