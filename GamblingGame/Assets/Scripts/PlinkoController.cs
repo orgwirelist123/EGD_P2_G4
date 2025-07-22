@@ -41,7 +41,7 @@ public class PlinkoController : MonoBehaviour
         {
             if (instance != this)
             {
-                Destroy(this);
+                Destroy(gameObject);
                 return;
             }
         }
