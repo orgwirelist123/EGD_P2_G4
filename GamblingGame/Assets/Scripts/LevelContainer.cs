@@ -6,12 +6,18 @@ public class LevelContainer : MonoBehaviour
     public string levelName = "Level0";
     public GameObject map;
     public GameObject skyboxPlane;
+    public Material skyboxMaterial;
 
     public float minimumLoadValue = -1;
     public float maximumUnloadValue = -1;
     public float maximumLoadValue = -1;
 
     public List<StageThreshold> stageThresholds = new List<StageThreshold>();
+
+    private void Awake()
+    {
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +28,7 @@ public class LevelContainer : MonoBehaviour
 
         foreach (StageThreshold threshold in stageThresholds)
         {
-            if (minimumLoadValue == -1 && maximumUnloadValue == -1)
+            if (minimumLoadValue == -1 || maximumUnloadValue == -1)
             {
                 minimumLoadValue = threshold.thresholdLoadValue;
                 maximumUnloadValue = threshold.thresholdUnloadValue;
@@ -37,6 +43,7 @@ public class LevelContainer : MonoBehaviour
         }
 
         stageManager.UpdateMaxLoadValue(maximumLoadValue);
+        stageManager.AddSkybox(maximumLoadValue, skyboxMaterial);
     }
 
     // Update is called once per frame

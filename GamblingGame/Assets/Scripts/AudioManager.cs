@@ -70,4 +70,15 @@ public class AudioManager : MonoBehaviour
 
         oneShotSource.PlayOneShot(container.audioClip, volume);
     }
+
+    public void PlayAudioOneShot(string name, float volume, float pitch)
+    {
+        AudioContainer container = GetAudioByName(name);
+        if (container == null) { return; }
+
+        float prevPitch = oneShotSource.pitch;
+        oneShotSource.pitch = pitch;
+        oneShotSource.PlayOneShot(container.audioClip, volume);
+        //oneShotSource.pitch = prevPitch;
+    }
 }

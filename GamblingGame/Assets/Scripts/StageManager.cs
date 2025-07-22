@@ -12,6 +12,10 @@ public class StageManager : MonoBehaviour
 
     public List<string> levelNames = new List<string>();
 
+    public List<Material> skyboxMaterials = new List<Material>();
+    public List<float> skyboxThresholds = new List<float>();
+    public Material goalSkybox;
+
     public float moneyCounter = 0;
     public float maxLoadValue = 0;
 
@@ -42,6 +46,8 @@ public class StageManager : MonoBehaviour
         {
             instance = this;
         }
+
+        skyboxThresholds.Add(0);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +63,8 @@ public class StageManager : MonoBehaviour
         //rumbleAudio.Pause();
 
         baseCameraPosition = playerCamera.transform.position;
+
+        goalSkybox = RenderSettings.skybox;
     }
 
     // Update is called once per frame
@@ -64,10 +72,13 @@ public class StageManager : MonoBehaviour
     {
         goalXOffset = Mathf.Lerp(0, maxXOffset, moneyCounter / maxLoadValue);
         currentXOffset = Mathf.Lerp(currentXOffset, goalXOffset, Time.deltaTime);
+        RenderSettings.skybox.Lerp(RenderSettings.skybox, goalSkybox, Time.deltaTime);
 
         Vector3 cameraOffset = new Vector3(currentXOffset, 0, 0);
         // moneyCounter += Time.deltaTime;
         playerCamera.transform.position = baseCameraPosition + cameraOffset;
+
+        UpdateSkybox();
     }
 
     public void UpdateMaxLoadValue(float newMaxLoadValue)
@@ -100,7 +111,6 @@ public class StageManager : MonoBehaviour
             anyMoving = anyMoving || threshold.stillMoving;
         }
 
-        Debug.Log(anyMoving);
         if (anyMoving)
         {
             // If any of them are still moving, then unpause the audio
@@ -115,8 +125,53 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public void AddSkybox(float maximumLoadValue, Material skyboxMaterial)
+    {
+        skyboxMaterials.Add(skyboxMaterial);
+        skyboxThresholds.Add(maximumLoadValue);
+    }
+
     public void AddMoney(float amount)
     {
         moneyCounter += amount;
+    }
+
+    public void UpdateSkybox()
+    {
+        if (skyboxThresholds.Count == 0 || skyboxMaterials.Count == 0)
+        {
+            return;
+        }
+
+        int indexA = 0;
+        int indexB = 1;
+
+        for (int i = 1; i < skyboxThresholds.Count - 2; i++)
+        {
+            // If we have enough money for this threshold, bump our indices up
+            if (skyboxThresholds[i] <= moneyCounter)
+            {
+                indexA++;
+                indexB++;
+            }
+        }
+
+
+        // Get the two skyboxes we would be between
+        Material skyboxA = skyboxMaterials[indexA];
+        Material skyboxB = skyboxMaterials[indexB];
+
+        float threshA = skyboxThresholds[indexA];
+        float threshB = skyboxThresholds[indexB];
+
+        float divisor = (threshB - threshA);
+
+        float t = (moneyCounter - threshA) / divisor + 0.01f;
+
+        Debug.Log(string.Format("{0} - {1} - {2} ({3} / {4})", indexA, indexB, t, moneyCounter - threshA, divisor));
+
+        goalSkybox = skyboxA;
+        goalSkybox.Lerp(goalSkybox, skyboxB, t);
+        //RenderSettings.skybox.Lerp(skyboxA, skyboxB, t);
     }
 }

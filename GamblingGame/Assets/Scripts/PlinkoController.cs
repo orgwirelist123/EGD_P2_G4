@@ -35,6 +35,9 @@ public class PlinkoController : MonoBehaviour
     protected float wanderMultiplier = 1;
     protected Vector3 lastWanderVector = Vector3.zero;
 
+    public int successes = 0;
+    public float successMultiplier = 0.1f;
+
     private void Awake()
     {
         if (instance != null)
@@ -120,6 +123,8 @@ public class PlinkoController : MonoBehaviour
             currentBall.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             currentBall = null;
             lastBallSpawn = Time.time;
+
+            AudioManager.instance.PlayAudioOneShot("Drop", 1);
         }
     }
 

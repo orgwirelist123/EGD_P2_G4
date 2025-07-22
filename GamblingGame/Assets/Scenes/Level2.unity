@@ -1607,6 +1607,7 @@ MonoBehaviour:
   levelName: Level2
   map: {fileID: 370681767}
   skyboxPlane: {fileID: 0}
+  skyboxMaterial: {fileID: 2100000, guid: 6411037a1fd4e62408cd3fa057dcc7ab, type: 2}
   minimumLoadValue: -1
   maximumUnloadValue: -1
   maximumLoadValue: -1

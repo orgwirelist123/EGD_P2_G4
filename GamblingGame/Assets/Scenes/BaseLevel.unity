@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 61441e74932ae3f4f86c78e43949104e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -407,6 +407,9 @@ MonoBehaviour:
   - Level2
   - Level3
   - Level4
+  skyboxMaterials: []
+  skyboxThresholds: []
+  goalSkybox: {fileID: 0}
   moneyCounter: 0
   maxLoadValue: 1
   plinkoBoard: {fileID: 0}
@@ -416,6 +419,7 @@ MonoBehaviour:
   baseCameraPosition: {x: 0, y: 0, z: 0}
   currentXOffset: 0
   maxXOffset: 5
+  goalXOffset: 0
 --- !u!4 &245144924
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +548,18 @@ MonoBehaviour:
   audioContainers:
   - name: Rumble
     audioClip: {fileID: 8300000, guid: 1b6ac3d38f125a34c86e313e73c3611f, type: 3}
+    defaultVolume: 1
+  - name: Drop
+    audioClip: {fileID: 8300000, guid: 351764e90a263354db991f418fc7fb2d, type: 3}
+    defaultVolume: 1
+  - name: Thud
+    audioClip: {fileID: 8300000, guid: b78e68e0508bcac4ba04bcd039ab13d7, type: 3}
+    defaultVolume: 1
+  - name: Succeed
+    audioClip: {fileID: 8300000, guid: a0066571256bd4840ad72676da3e6d27, type: 3}
+    defaultVolume: 0.5
+  - name: MetalSheet
+    audioClip: {fileID: 8300000, guid: c7e2950fef7370649b52839c3fac8dc8, type: 3}
     defaultVolume: 1
 --- !u!1 &318711918
 GameObject:
