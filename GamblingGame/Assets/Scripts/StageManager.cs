@@ -193,7 +193,7 @@ public class StageManager : MonoBehaviour
         GameObject person = Instantiate(personPrefab, playerCamera.transform);
         person.transform.SetParent(gameObject.transform);
 
-        person.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10.0f, -200.0f), Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f)));
+        person.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100.0f, -200.0f), Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f)));
     }
 
     public void DelaySetOpacity()
