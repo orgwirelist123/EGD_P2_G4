@@ -23,7 +23,7 @@ Material:
   m_Name: IMG_4661 Variant
   m_Shader: {fileID: -6465566751694194690, guid: 8524c16f3cf50b74f950f1a0f19ef2d4, type: 3}
   m_Parent: {fileID: 2100000, guid: f2417af9faf131b41b6860b38784f8cf, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -36,14 +36,14 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _High_Light_Area: 1
-    - _Shading_Area1: 2
-    - _Shading_Area2: 0.15
+    m_Floats: []
     m_Colors:
-    - _Base_Color: {r: 0.7169812, g: 0.6527083, b: 0.5974843, a: 0}
-    - _Middle_Shade_Color: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 0}
+    - _Base_Color: {r: 0.59748423, g: 0.45650476, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
